@@ -1,8 +1,8 @@
-import os
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-from src.resources import users
+#TODO importar models
+from src.models.user import User
 from src.app import app
 from src.db import db
 

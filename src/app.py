@@ -1,6 +1,6 @@
 from decouple import Config
 from flask import Flask
-# from flask_restful import Api
+from flask_restful import Api
 
 app = Flask(__name__)
 
@@ -9,9 +9,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # from src.models.user import User
 
-# api = Api(app)
+api = Api(app)
 #
-# api.add_resource(users, '/users')
+api.add_resource(users, '/users')
 
 @app.route('/')
 def hello_world():

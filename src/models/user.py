@@ -8,6 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255))
     password = db.Column(db.String(50))
+    status = db.Column(db.String(10))
 
     def __init__(self, user_id, username, email, password):
         self.user_id = user_id,
