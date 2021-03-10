@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-script = "*"
 flask-restful = "*"
+healthcheck = "*"
 
 [dev-packages]
 
