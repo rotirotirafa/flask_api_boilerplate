@@ -5,6 +5,7 @@ from flask import jsonify, request
 
 
 class Users(Resource):
+    # TODO criar resource base
 
     def get(self) -> Dict:
         users = [
