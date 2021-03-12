@@ -3,7 +3,7 @@ from flask import Flask
 from flask_restful import Api
 from healthcheck import HealthCheck
 
-from resources.users import Users
+from src.resources.users import Users
 
 app = Flask(__name__)
 

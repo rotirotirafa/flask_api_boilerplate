@@ -5,7 +5,6 @@ from flask import jsonify, request
 
 
 class Users(Resource):
-    http_methods_allowed = ['GET', 'POST', 'PUT', 'DELETE']
 
     def get(self) -> Dict:
         users = [
