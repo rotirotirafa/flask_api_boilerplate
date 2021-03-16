@@ -338,3 +338,49 @@ class Match(db.Model):
                 'traveler_name': row.Traveler.name
             })
         return matches
+
+    @classmethod
+    def find_all_by_driver_id(cls, driver_id):
+        matches = []
+        rows = db.session.query(Trip, Traveler, Driver, Match).filter(
+            Trip.id == Match.trip_id,
+            Traveler.id == Match.traveler_id,
+            Driver.id == driver_id
+        ).all()
+        for row in rows:
+            matches.append({
+                'match_id': row.Match.id,
+                'trip_id': row.Trip.id,
+                'driver_id': row.Driver.id,
+                'driver_name': row.Driver.name,
+                'driver_car_model': row.Driver.vehicle_model,
+                'driver_plate_number': row.Driver.vehicle_plate_number,
+                'destination_a': row.Trip.destination_a,
+                'destination_b': row.Trip.destination_b,
+                'traveler_id': row.Traveler.id,
+                'traveler_name': row.Traveler.name
+            })
+        return matches
+
+    @classmethod
+    def find_all_by_traveler_id(cls, traveler_id):
+        matches = []
+        rows = db.session.query(Trip, Traveler, Driver, Match).filter(
+            Trip.id == Match.trip_id,
+            Traveler.id == traveler_id,
+            Driver.id == Match.driver_id
+        ).all()
+        for row in rows:
+            matches.append({
+                'match_id': row.Match.id,
+                'trip_id': row.Trip.id,
+                'driver_id': row.Driver.id,
+                'driver_name': row.Driver.name,
+                'driver_car_model': row.Driver.vehicle_model,
+                'driver_plate_number': row.Driver.vehicle_plate_number,
+                'destination_a': row.Trip.destination_a,
+                'destination_b': row.Trip.destination_b,
+                'traveler_id': row.Traveler.id,
+                'traveler_name': row.Traveler.name
+            })
+        return matches

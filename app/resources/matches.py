@@ -11,9 +11,13 @@ from app.services.matches import MatchesService
 class Matches(Resource):
     service = MatchesService()
 
-    def get(self, traveler_id=None) -> Dict:
-        if traveler_id:
-            return self.service.get_matches_by_traveler_id(traveler_id)
+    def get(self, id=None) -> Dict:
+        if id:
+            payload = request.get_json()
+            if payload.get('travelers') is True:
+                return self.service.get_matches_by_traveler_id(id)
+            if payload.get('drivers') is True:
+                return self.service.get_matches_by_driver_id(id)
         matches = self.service.get_all()
         return {'matches': matches}
 
