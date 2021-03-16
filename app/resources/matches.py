@@ -11,7 +11,9 @@ from app.services.matches import MatchesService
 class Matches(Resource):
     service = MatchesService()
 
-    def get(self) -> Dict:
+    def get(self, traveler_id=None) -> Dict:
+        if traveler_id:
+            return self.service.get_matches_by_traveler_id(traveler_id)
         matches = self.service.get_all()
         return {'matches': matches}
 

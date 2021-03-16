@@ -319,7 +319,11 @@ class Match(db.Model):
     @classmethod
     def find_all(cls):
         matches = []
-        rows = db.session.query(Trip, Traveler, Driver, Match).filter(Trip.id == Match.id, Traveler.id == Match.traveler_id, Driver.id == Trip.driver_id).all()
+        rows = db.session.query(Trip, Traveler, Driver, Match).filter(
+            Trip.id == Match.trip_id,
+            Traveler.id == Match.traveler_id,
+            Driver.id == Match.driver_id
+        ).all()
         for row in rows:
             matches.append({
                 'match_id': row.Match.id,

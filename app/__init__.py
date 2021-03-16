@@ -30,6 +30,6 @@ def create_app():
     api.add_resource(Travelers, '/travelers', '/travelers/<int:traveler_id>')
     api.add_resource(Drivers, '/drivers', '/drivers/<int:driver_id>')
     api.add_resource(Trips, '/trips', '/trips/<int:driver_id>')
-    api.add_resource(Matches, '/matches')
+    api.add_resource(Matches, '/matches', '/matches/<int:traveler_id>')
 
     return app
