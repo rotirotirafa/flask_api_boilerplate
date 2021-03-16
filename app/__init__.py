@@ -29,7 +29,7 @@ def create_app():
     api.add_resource(Users, '/users', '/users/<int:user_id>')
     api.add_resource(Travelers, '/travelers', '/travelers/<int:traveler_id>')
     api.add_resource(Drivers, '/drivers', '/drivers/<int:driver_id>')
-    api.add_resource(Trips, '/trips', '/trips/<int:trip_id>')
-    api.add_resource(Matches, '/matches', '/matches/<int:match_id>')
+    api.add_resource(Trips, '/trips', '/trips/<int:driver_id>')
+    api.add_resource(Matches, '/matches')
 
     return app

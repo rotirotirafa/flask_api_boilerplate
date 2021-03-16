@@ -13,9 +13,9 @@ class MatchesService:
         return self.match_model.find_all()
 
     def create(self, payload) -> Dict:
-        trip = self.match_model(
+        match = self.match_model(
             driver_id=payload['driver_id'],
             traveler_id=payload['traveler_id'],
             trip_id=payload['trip_id'])
-        trip.save()
-        return trip.to_dict()
+        match.save()
+        return match.to_dict()

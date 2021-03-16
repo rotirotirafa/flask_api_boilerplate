@@ -11,12 +11,11 @@ from app.services.trips import TripsService
 class Trips(Resource):
     service = TripsService()
 
-    def get(self, trip_id=None) -> Dict:
-        if trip_id:
-            trip = self.service.get_one(trip_id)
-            return {'trip': trip}
-        trips = self.service.get_all()
-        return {'trips': trips}
+    def get(self, driver_id=None) -> Dict:
+        if driver_id:
+            trips = self.service.get_all_trips_with_driver_id(driver_id)
+            return {'trips': trips}
+        return {'trips': 'none'}
 
     def put(self, trip_id) -> Dict:
         payload = request.get_json()

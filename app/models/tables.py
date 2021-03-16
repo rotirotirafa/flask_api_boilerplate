@@ -254,6 +254,21 @@ class Trip(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    @classmethod
+    def find_all(cls, driver_id):
+        trips = []
+        rows = db.session.query(Trip, Driver).filter(Driver.id == driver_id).all()
+        for row in rows:
+            trips.append({
+                'trip_id': row.Trip.id,
+                'destination_a': row.Trip.destination_a,
+                'destination_b': row.Trip.destination_b,
+                'driver_id': row.Trip.driver_id,
+                'driver_name': row.Driver.name
+            })
+        return trips
+
+
     #driver = relationship('Driver', remote_side='Driver._id', foreign_keys='driver.id')
 
 
@@ -284,3 +299,22 @@ class Match(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def find_all(cls):
+        matches = []
+        rows = db.session.query(Trip, Traveler, Driver, Match).filter(Trip.id == Match.id, Traveler.id == Match.traveler_id, Driver.id == Trip.driver_id).all()
+        for row in rows:
+            matches.append({
+                'match_id': row.Match.id,
+                'trip_id': row.Trip.id,
+                'driver_id': row.Driver.id,
+                'driver_name': row.Driver.name,
+                'driver_car_model': row.Driver.vehicle_model,
+                'driver_plate_number': row.Driver.vehicle_plate_number,
+                'destination_a': row.Trip.destination_a,
+                'destination_b': row.Trip.destination_b,
+                'traveler_id': row.Traveler.id,
+                'traveler_name': row.Traveler.name
+            })
+        return matches
