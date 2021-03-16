@@ -268,6 +268,22 @@ class Trip(db.Model):
             })
         return trips
 
+    @classmethod
+    def find_all_trips(cls):
+        trips = []
+        rows = db.session.query(Trip, Driver).filter(Driver.id == Trip.driver_id).all()
+        for row in rows:
+            trips.append({
+                'trip_id': row.Trip.id,
+                'destination_a': row.Trip.destination_a,
+                'destination_b': row.Trip.destination_b,
+                'driver_id': row.Trip.driver_id,
+                'driver_name': row.Driver.name,
+                'vehicle_model': row.Driver.vehicle_model,
+                'vehicle_plate_number': row.Driver.vehicle_plate_number
+            })
+        return trips
+
 
     #driver = relationship('Driver', remote_side='Driver._id', foreign_keys='driver.id')
 

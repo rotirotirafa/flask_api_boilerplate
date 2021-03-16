@@ -15,7 +15,7 @@ class Trips(Resource):
         if driver_id:
             trips = self.service.get_all_trips_with_driver_id(driver_id)
             return {'trips': trips}
-        return {'trips': 'none'}
+        return {'trips': self.service.get_all_trips()}
 
     def put(self, trip_id) -> Dict:
         payload = request.get_json()

@@ -12,6 +12,9 @@ class TripsService:
     def get_all_trips_with_driver_id(self, driver_id):
         return self.trip_model.find_all(driver_id)
 
+    def get_all_trips(self):
+        return self.trip_model.find_all_trips()
+
     def create(self, payload) -> Dict:
         trip = self.trip_model(
             driver_id=payload['driver_id'],
