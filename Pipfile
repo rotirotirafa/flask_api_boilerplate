@@ -42,6 +42,7 @@ Flask-RESTful = "==0.3.8"
 passlib = "*"
 pyjwt = "*"
 flask-cors = "*"
+gunicorn = "*"
 
 [dev-packages]
 
