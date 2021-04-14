@@ -43,6 +43,7 @@ passlib = "*"
 pyjwt = "*"
 flask-cors = "*"
 gunicorn = "*"
+gevent = "*"
 
 [dev-packages]
 
