@@ -15,3 +15,4 @@ PORT = config("PORT", default=8010, cast=int)
 
 ENVIRONMENT = config("ENVIRONMENT", default="development")
 
+BASE_PATH = config("BASE_PATH")
